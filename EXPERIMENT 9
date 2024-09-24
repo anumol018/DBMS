@@ -29,3 +29,5 @@ select * from Delivery_Exp9_Csea_16;
 Select C.Custid,Custname,Address,State From Customers_Exp9_Csea_16 C Join Orders_Exp9_Csea_16 O On C.Custid=O.Custid;
 Select C.Custid,Custname,Address,State From Customers_Exp9_Csea_16 C Join Delivery_Exp9_Csea_16 D On C.Custid=D.Custid;
 Select Custname,Orderdate From Orders_Exp9_Csea_16 O Join Customers_Exp9_Csea_16 C On O.Custid=C.Custid Where Custname Like'J%';
+Select * From Customers_Exp9_Csea_16 C Left Outer Join Orders_Exp9_Csea_16 O On C.Custid=O.Custid;
+Select * From Customers_Exp9_Csea_16 C right Outer Join Orders_Exp9_Csea_16 O On C.Custid=O.Custid;
