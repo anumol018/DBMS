@@ -1,0 +1,31 @@
+Create Table Items_Exp9_Csea_16(Itemid Int Primary Key,Itemname Varchar(50), Category Varchar(40),Price Number(6),Instock Int Check(Instock>=0)); 
+Create Table Customers_Exp9_Csea_16(Custid Int Primary Key,Custname Varchar(40),Address Varchar(40),State Varchar(40));
+Create Table Orders_Exp9_Csea_16(Orderid Int Primary Key,Itemid Int,Custid Int,Quantity Int,Orderdate Date,Foreign Key(Custid) References Customers_Exp9_Csea_16,Foreign Key(Itemid) References Items_Exp9_Csea_16);
+Create Table Delivery_Exp9_Csea_16(Deliveryid Int Primary Key,Custid Int,Orderid Int,Foreign Key(Custid) References Customers_Exp9_Csea_16,Foreign Key(Orderid) References Orders_Exp9_Csea_16);
+
+Insert Into Items_Exp9_Csea_16 Values(101,'Samsung GalaxyS4','Gadgets',40000,6);
+Insert Into Items_Exp9_Csea_16 Values(102,'Whirlpool Fridge','Home Appliances',20000,3);
+Insert Into Items_Exp9_Csea_16 Values(103,'Boat airpod','Gadgets',3500,30);
+Insert Into Items_Exp9_Csea_16 Values(104,'Kanchipuram Saree','Dresses',4000,10);
+Insert Into Items_Exp9_Csea_16 Values(105,'Alchemist','Books',500,20);
+Select * From Items_Exp9_Csea_16;
+Insert Into Customers_Exp9_Csea_16 Values(01,'Ananya Menon','Greams Road','Tamil Nadu');
+Insert Into Customers_Exp9_Csea_16 Values(02,'James Mathew','Mundakkayam-Erumely Road','Kerala');
+Insert Into Customers_Exp9_Csea_16 Values(03,'Mickey James ','Pala','Kerala');
+Insert Into Customers_Exp9_Csea_16 Values(04,'Nitya Samuel','Hans Raj Gupta Marg','New Delhi');
+Insert Into Customers_Exp9_Csea_16 Values(05,'Jack Daniel','Ranganathan street','Tamil Nadu');
+Select * From Customers_Exp9_Csea_16;
+Insert Into Orders_Exp9_Csea_16 Values(111,101,04,1,'02-11-2012');
+Insert Into Orders_Exp9_Csea_16 Values(112,104,03,3,'08-09-2018');
+Insert Into Orders_Exp9_Csea_16 Values(113,105,02,1,'02-07-2012');
+Insert Into Orders_Exp9_Csea_16 Values(114,101,03,1,'24-11-2014');
+Insert Into Orders_Exp9_Csea_16 Values(115,103,05,1,'07-12-2015');
+Select * From Orders_Exp9_Csea_16;
+Insert Into Delivery_Exp9_Csea_16 Values(10,03,114); 
+Insert Into Delivery_Exp9_Csea_16 Values(11,04,111); 
+Insert Into Delivery_Exp9_Csea_16 Values(12,02,113); 
+select * from Delivery_Exp9_Csea_16;
+
+Select C.Custid,Custname,Address,State From Customers_Exp9_Csea_16 C Join Orders_Exp9_Csea_16 O On C.Custid=O.Custid;
+Select C.Custid,Custname,Address,State From Customers_Exp9_Csea_16 C Join Delivery_Exp9_Csea_16 D On C.Custid=D.Custid;
+Select Custname,Orderdate From Orders_Exp9_Csea_16 O Join Customers_Exp9_Csea_16 C On O.Custid=C.Custid Where Custname Like'J%';
