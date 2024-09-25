@@ -31,7 +31,7 @@ Select C.Custid,Custname,Address,State From Customers_Exp9_Csea_16 C Join Delive
 Select Custname,Orderdate From Orders_Exp9_Csea_16 O Join Customers_Exp9_Csea_16 C On O.Custid=C.Custid Where Custname Like'J%';
 Select I.Itemname,I.Price From Orders_Exp9_Csea_16 O Join Items_Exp9_Csea_16 I On O.Itemid = I.Itemid Join Customers_Exp9_Csea_16 C On O.Custid = C.Custid Where C.Custname Like'Mickey%';
 Select * From Customers_Exp9_Csea_16 C Join Orders_Exp9_Csea_16 O On C.Custid = O.Custid Where O.Orderid Not In (Select Orderid From Delivery_Exp9_Csea_16) And O.Orderdate > '31-jan-2013';
-Select Itemid From Orders_Exp9_Csea_16 Union Select Itemid From Items_Exp9_Csea_16 Where Itemid Not In (Select Itemid From Delivery_Exp9_Csea_16);
+SELECT itemid FROM Orders_Exp9_Csea_16 UNION SELECT itemid FROM Orders_Exp9_Csea_16 WHERE itemid NOT IN (SELECT itemid FROM Delivery_Exp9_Csea_16 d JOIN orders_exp9_csea_16 o ON d.orderid=o.orderid);
 select custname from Customers_Exp9_Csea_16 c JOIN Delivery_Exp9_Csea_16 d on c.custid=d.custid;
 SELECT c.custname FROM Customers_Exp9_Csea_16 c JOIN Orders_Exp9_Csea_16 o ON c.Custid = o.Custid MINUS SELECT c.custname FROM Customers_Exp9_Csea_16 c JOIN Delivery_Exp9_Csea_16 d ON c.Custid = d.Custid;
 Select Custname From Customers_Exp9_Csea_16 C Join Orders_Exp9_Csea_16 O On C.Custid = O.Custid Intersect Select Custname From Customers_Exp9_Csea_16 C Join Orders_Exp9_Csea_16 O On C.Custid = O.Custid Where O.Custid Not In (Select Custid From Delivery_Exp9_Csea_16);    
