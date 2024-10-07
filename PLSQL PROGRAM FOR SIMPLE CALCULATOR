@@ -1,0 +1,20 @@
+DECLARE
+a number:=&a;
+b number:=&b;
+choice number:=&choice;
+BEGIN
+case choice
+when 1 then
+dbms_output.put_line('Sum is '||(a+b));
+when 2 then
+dbms_output.put_line('Difference is '||(a-b));
+when 3 then
+dbms_output.put_line('Product is '||(a*b));
+when 4 then
+if b=0 then
+dbms_output.put_line('Error!Division by zero');
+else
+dbms_output.put_line('Quotient is '||(a/b));
+end if;
+end case;
+* end;
