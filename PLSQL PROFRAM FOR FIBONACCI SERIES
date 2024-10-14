@@ -1,0 +1,18 @@
+ DECLARE
+    x number:=0;
+    y number:=1;
+    z number;
+    fibcount number:=2;
+    n number:=&n;
+BEGIN
+   dbms_output.put_line('Fibinocci Series');
+   dbms_output.put_line('0');
+   dbms_output.put_line('1');
+   while fibcount<n loop
+     z:=x+y;
+     x:=y;
+     y:=z;
+     dbms_output.put_line(z);
+     fibcount:=fibcount+1;
+   end loop;
+ * end;
