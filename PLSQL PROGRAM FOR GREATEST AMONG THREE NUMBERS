@@ -1,0 +1,15 @@
+DECLARE
+ a number:=&amp;a;
+ b number:=&amp;b;
+ c number:=&amp;c;
+ BEGIN
+ if a&gt;b AND a&gt;c
+ then
+ dbms_output.put_line(&#39;Greatest number is &#39;||a);
+ elsif b&gt;a AND b&gt;c
+ then
+ dbms_output.put_line(&#39;Greatest number id &#39;||b);
+ else
+ dbms_output.put_line(&#39;Greatest number is &#39;||c);
+ end if;
+* end;
