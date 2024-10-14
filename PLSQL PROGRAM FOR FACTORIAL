@@ -1,0 +1,12 @@
+SQL> set serveroutput on;
+DECLARE
+ f number :=1;
+ n number :=&amp;n;
+BEGIN
+ while n&gt;0
+ loop
+ f:=n*f;
+ n:=n-1;
+ end loop;
+ dbms_output.put_line(&#39;Factorial is &#39;||f);
+* end;
