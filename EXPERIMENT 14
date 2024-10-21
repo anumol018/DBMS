@@ -79,12 +79,13 @@ After Insert or update On Emp_Details
 For Each Row 
 When (new.Salary>20000)
 Begin
-Dbms_Output.Put_Line('The salary you have entered is greater then 20000');
+Dbms_Output.Put_Line('The salary you have entered is greater than 20000');
 End;
 /
 Insert Into Emp_Details Values('EP30','Arya Mary',60000);
 Insert Into Emp_Details Values('EP08','Tom Miller',16000);
-select * from Emp_Details;
+Select * From Emp_Details;
+
 
 Create Table Cust_Count(Count_Row Int);
 Insert Into Cust_Count Values(0);
@@ -110,9 +111,16 @@ Create Or Replace Trigger Trigger4
 After Delete or update On Emp_Details
 For Each Row
 Begin
+If Deleting Then Insert Into Insert_Deleted_Row Values(:Old.Empid,:Old.Empname,:Old.Salary);
+else  insert into insert_updated_row values (:old.empid,:new.empname,:old.salary);
+end if;
+End;
 
-
-
+Select * From Emp_Details;
+delete from Emp_Details where empid='EP30';
+Select * From Insert_Deleted_Row;
+update Emp_Details set empname='Leyla M' where Empid='EP12';
+Select * From insert_updated_row;
 
 Commit;
 
