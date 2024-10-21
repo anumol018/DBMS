@@ -112,7 +112,7 @@ After Delete or update On Emp_Details
 For Each Row
 Begin
 If Deleting Then Insert Into Insert_Deleted_Row Values(:Old.Empid,:Old.Empname,:Old.Salary);
-else  insert into insert_updated_row values (:old.empid,:new.empname,:old.salary);
+else  insert into insert_updated_row values (:new.empid,:new.empname,:new.salary);
 end if;
 End;
 
