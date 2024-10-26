@@ -1,0 +1,61 @@
+Create Table Bank_Details(Accno Int Primary Key,Cname Varchar(30),Balance Int,Adate Date);
+Insert Into Bank_Details Values(1001,'aby',3005,'10-oct-15');
+Insert Into Bank_Details Values(1002,'alan',4000,'05-may-95');
+Insert Into Bank_Details Values(1003,'amal',5000,'16-mar-92');
+Insert Into Bank_Details Values(1004,'jeffin',3500,'01-apr-50');
+Select * From Bank_Details;
+Create Table Bank_New(AccNo Int,Interest Int);
+
+Declare Cursor Temp Is
+Select Accno,CName,Balance,Adate From Bank_Details;
+tempvar temp %rowtype;
+intr int;
+BEGIN
+open temp;
+loop
+Fetch Temp Into Tempvar;
+exit when temp%notfound;
+Intr:=.08*Tempvar.Balance;
+Insert Into Bank_New Values(Tempvar.Accno,Intr);
+End Loop;
+Close Temp;
+End;
+Select * From Bank_New;
+
+Create Table Student_Exp16(Sid Int Primary Key,Sname Varchar(30),M1 Int,M2 Int,M3 Int,Grade Varchar(3));
+Insert Into Student_Exp16 (Sid,Sname,M1,M2,M3) values(1,'Bob',49,42,45);
+Insert Into Student_Exp16 (Sid,Sname,M1,M2,M3) values(2,'Aby',34,28,30);
+Insert Into Student_Exp16 (Sid,Sname,M1,M2,M3) values(3,'Maria',19,7,30);
+Insert Into Student_Exp16 (Sid,Sname,M1,M2,M3) values(4,'Miya',40,49,45);
+Insert Into Student_Exp16 (Sid,Sname,M1,M2,M3) values(5,'Neeraj',49,39,40);
+Select * From Student_Exp16;
+Declare Cursor Temp Is
+Select Sid,SName,M1,M2,M3,Grade From Student_Exp16;
+Tempvar Temp %Rowtype;
+total int;
+grades varchar(5);
+Begin
+OPEN temp;
+LOOP
+Fetch Temp Into Tempvar;
+Exit When Temp%Notfound;
+Total:=tempvar.M1 + tempvar.M2 + tempvar.M3;
+if total>130 then
+grades:='A';
+elsif total>125 then
+grades:='B';
+elsif total>115 then
+grades:='C';
+elsif total>90 then
+grades:='D';
+elsif total>70 then
+grades:='E';
+else
+grades:='F';
+END if;
+update Student_Exp16 set grade=grades where Sid=tempvar.Sid;
+END LOOP;
+CLOSE temp;
+END;
+select * from student_exp16;
+
