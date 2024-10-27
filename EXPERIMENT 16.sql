@@ -108,3 +108,4 @@ END if;
 END LOOP;
 CLOSE Temp;
 END;
+select * from Employee_list;
