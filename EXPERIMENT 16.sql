@@ -22,6 +22,7 @@ End;
 Select * From Bank_New;
 
 Create Table Student_Exp16(Sid Int Primary Key,Sname Varchar(30),M1 Int,M2 Int,M3 Int,Grade Varchar(3));
+desc student_Exp16;
 Insert Into Student_Exp16 (Sid,Sname,M1,M2,M3) values(1,'Bob',49,42,45);
 Insert Into Student_Exp16 (Sid,Sname,M1,M2,M3) values(2,'Aby',34,28,30);
 Insert Into Student_Exp16 (Sid,Sname,M1,M2,M3) values(3,'Maria',19,7,30);
@@ -91,7 +92,7 @@ insert into Employee_list values('EM12','David Smith',4600);
 insert into Employee_list values('EM45','Olivia Woods',10000);
 insert into Employee_list values('EM16','Arohi Varma',25000);
 insert into Employee_list values('EM34','Charles Brown',50000);
-insert into Employee_list values('EM02','David Smith',100000);
+insert into Employee_list values('EM02','Divina Miller',100000);
 select * from Employee_list;
 Declare Cursor Temp Is
 Select id,name,monthly_salary from Employee_list;
