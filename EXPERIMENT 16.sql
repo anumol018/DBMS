@@ -86,14 +86,6 @@ END LOOP;
 END;
 select * from exp_list;
 
-Create table Employee_list(id varchar(5) primary key,name varchar(30),monthly_salary number(10));
-desc Employee_list;
-insert into Employee_list values('EM12','David Smith',4600);
-insert into Employee_list values('EM45','Olivia Woods',10000);
-insert into Employee_list values('EM16','Arohi Varma',25000);
-insert into Employee_list values('EM34','Charles Brown',50000);
-insert into Employee_list values('EM02','Divina Miller',100000);
-select * from Employee_list;
 Declare Cursor Temp Is
 Select id,name,monthly_salary from Employee_list;
 tempvar temp %rowtype;
@@ -108,7 +100,7 @@ if annual_salary < 60000 THEN
     UPDATE Employee_list SET monthly_salary=tempvar.monthly_salary+tempvar.monthly_salary*0.25 where id=tempvar.id;
 elsif annual_salary > 60000 AND annual_salary < 200000 THEN 
     UPDATE Employee_list SET monthly_salary=tempvar.monthly_salary+tempvar.monthly_salary*0.20 where id=tempvar.id;
-elsif annual_salary > 200000 AND annual_salary > 500000 THEN 
+elsif annual_salary > 200000 AND annual_salary < 500000 THEN 
     UPDATE Employee_list SET monthly_salary=tempvar.monthly_salary+tempvar.monthly_salary*0.15 where id=tempvar.id;
 elsif annual_salary > 500000 THEN 
     UPDATE Employee_list SET monthly_salary=tempvar.monthly_salary+tempvar.monthly_salary*0.10 where id=tempvar.id;
@@ -116,4 +108,3 @@ END if;
 END LOOP;
 CLOSE Temp;
 END;
-select * from Employee_list;
